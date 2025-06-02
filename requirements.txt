@@ -1,0 +1,8 @@
+flask
+locust
+elastic-apm
+psutil
+redis
+python-dotenv
+gunicorn
+prometheus_client

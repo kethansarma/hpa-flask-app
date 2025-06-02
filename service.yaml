@@ -1,0 +1,15 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: python
+spec:
+  selector:
+    app: flask-app # Selects pods with the label app: flask-app
+  ports:
+    - protocol: TCP
+      port: 5000 # The port the service will listen on
+      targetPort: 5000 # The port on the pod to forward traffic to
+  # type: NodePort # Exposes the service on a port on each Node of the cluster.
+                  # For local development, ClusterIP is also an option if you use port-forwarding.
+                  # LoadBalancer is used for cloud environments.

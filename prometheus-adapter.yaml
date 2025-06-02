@@ -1,0 +1,11 @@
+prometheus:
+  url: http://prometheus-kube-prometheus-prometheus.default.svc.cluster.local
+  port: 9090
+
+rules:
+  default: false
+  external:
+    - seriesQuery: '{job="python-app"}'
+      resources:
+        template: <<.Resource>>
+      metricsQuery: "<<.Series>>"

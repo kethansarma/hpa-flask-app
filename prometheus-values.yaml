@@ -1,0 +1,6 @@
+prometheus:
+  prometheusSpec:
+    additionalScrapeConfigs:
+      - job_name: 'python-app'
+        static_configs:
+          - targets: ['python.default.svc.cluster.local:5000']

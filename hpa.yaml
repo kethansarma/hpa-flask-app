@@ -1,0 +1,36 @@
+# hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: flask-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: flask-app-deployment # Refers to your deployment name
+  minReplicas: 1 # Minimum number of pods
+  maxReplicas: 5 # Maximum number of pods
+  metrics:
+  # - type: Resource
+  #   resource:
+  #     name: momory
+  #     target:
+  #       type: AverageValue
+          # averageValue: 100M
+  # - type: Pods # This metric type is used when the metric is reported by pods themselves
+  #   pods:
+  #     metric:
+  #       name: flask_app_predict_requests_total # The name of the custom metric exposed by Prometheus Adapter
+  #     target:
+  #       type: AverageValue # Target an average value across all pods
+  #       averageValue: "10" # Target 10 'predict' requests per second (or per scrape interval) per pod
+  - type: External
+    external:
+        metric:
+          name: custom_metric
+        target:
+          type: Value
+          value: 50
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 60
