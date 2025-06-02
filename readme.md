@@ -1,0 +1,4 @@
+- Create a .env file and add values as in .env_sample
+- create virtual environment using python3 -m venv elk
+- Activate envi using source envi/bin/activate command
+- pip install -r requirements.txt
