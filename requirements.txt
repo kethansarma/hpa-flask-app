@@ -6,3 +6,5 @@ redis
 python-dotenv
 gunicorn
 prometheus_client
+flask-cors>=6.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
+requests>=2.32.4 # not directly required, pinned by Snyk to avoid a vulnerability
